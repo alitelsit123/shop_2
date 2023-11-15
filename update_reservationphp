@@ -1,0 +1,34 @@
+<?php
+@include 'config.php';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $tableId = $_POST['tableId'];
+
+    // Perform the update in the database (you need to implement this)
+    // Example:
+    // mysqli_query($conn, "UPDATE `tables` SET status = (status == 'Reserved') ? 'Not Reserved' : 'Reserved' WHERE id_table = $tableId");
+
+    // Send a response to the client
+    header('Content-Type: application/json');
+    echo json_encode(['success' => true, 'reserved' => ($status == 'Reserved')]);
+    exit;
+} else {
+    header('Content-Type: application/json');
+    echo json_encode(['success' => false, 'message' => 'Invalid request method']);
+    exit;
+}
+$updateQuery = "UPDATE `tables` SET status = (status == 'Reserved') ? 'Not Reserved' : 'Reserved' WHERE id_table = $tableId";
+$result = mysqli_query($conn, $updateQuery);
+
+if ($result) {
+    // Send a success response to the client
+    header('Content-Type: application/json');
+    echo json_encode(['success' => true, 'reserved' => ($status == 'Reserved')]);
+    exit;
+} else {
+    // Send an error response to the client
+    header('Content-Type: application/json');
+    echo json_encode(['success' => false, 'message' => 'Failed to update reservation status']);
+    exit;
+}
+?>
