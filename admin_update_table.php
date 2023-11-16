@@ -14,8 +14,9 @@ if(isset($_POST['update_table'])){
    $update_t_id = $_POST['update_t_id'];
    $table_name = mysqli_real_escape_string($conn, $_POST['table_name']);
    $table_description = mysqli_real_escape_string($conn, $_POST['table_description']);
+   $status_table = mysqli_real_escape_string($conn, $_POST['status_table']);
 
-   mysqli_query($conn, "UPDATE `tables` SET name = '$table_name',  description = '$table_description' WHERE id_table = '$update_t_id'") or die('query failed');
+   mysqli_query($conn, "UPDATE `tables` SET name = '$table_name',  description = '$table_description', status_table='$status_table' WHERE id_table = '$update_t_id'") or die('query failed');
 
    $table_image = $_FILES['table_image']['name'];
    $table_image_size = $_FILES['table_image']['size'];
@@ -74,7 +75,12 @@ if(isset($_POST['update_table'])){
    <input type="hidden" value="<?php echo $fetch_tables['id_table']; ?>" name="update_t_id">
    <input type="hidden" value="<?php echo $fetch_tables['image']; ?>" name="update_t_image">
    <input type="text" class="box" value="<?php echo $fetch_tables['name']; ?>" required placeholder="Update table name" name="table_name">
+   
    <textarea name="table_description" class="box" required placeholder="Update table description" cols="30" rows="10"><?php echo $fetch_tables['description']; ?></textarea>
+   <select name="status_table" class="box" id="">
+    <option value="available" <?= $fetch_tables['status_table'] == 'available' ? 'selected':'' ?>>Tersedia</option>
+    <option value="unavailable" <?= $fetch_tables['status_table'] == 'unavailable' ? 'selected':'' ?>>Tidak Tersedia</option>
+   </select>
    <input type="file" accept="image/jpg, image/jpeg, image/png" class="box" name="table_image">
    <input type="submit" value="Update Table" name="update_table" class="btn">
    <a href="admin_products.php" class="option-btn">Kembali</a>

@@ -76,11 +76,18 @@ $message[] = 'Produk ditambahkan ke troli';
       <form action="" method="POST" class="box">
          <a href="view_page_table.php?pid=<?php echo $fetch_table['id_table']; ?>" class="fas fa-eye"></a>
          <img src="uploaded_img/<?php echo $fetch_table['image']; ?>" alt="" class="image">
-         <div class="name"><?php echo $fetch_table['name']; ?></div>
+         <div class="name" style="display: flex; align-items:center;justify-content:center;">
+          <?php echo $fetch_table['name']; ?>
+          <span style="<?= $fetch_table['status_table'] == 'unavailable' ? 'background-color: red; color:white;':'background-color: green; color:white;' ?> padding: .75rem;font-size: 1rem;margin-left: 1rem;border-radius: 7px;"><?php echo $fetch_table['status_table'] == 'available' ? 'Tersedia':'Tidak Tersedia'; ?></span>
+         </div>
          <input type="hidden" name="product_id" value="<?php echo $fetch_table['id_table']; ?>">
          <input type="hidden" name="product_name" value="<?php echo $fetch_table['name']; ?>">
          <input type="hidden" name="product_image" value="<?php echo $fetch_table['image']; ?>">
+         <?php if($fetch_table['status_table'] == 'available'): ?>
          <input type="submit" value="Reservasi" name="add_to_cart" class="btn">
+         <?php else: ?>
+         <input type="button" value="Tambah Ke Keranjang" name="add_to_cart" class="btn" style="cursor: not-allowed; opacity: .7;">
+         <?php endif; ?>
       </form>
       <?php
          }
