@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 15 Nov 2023 pada 16.29
+-- Waktu pembuatan: 17 Nov 2023 pada 03.30
 -- Versi server: 10.4.28-MariaDB
 -- Versi PHP: 8.2.4
 
@@ -24,6 +24,52 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `booked`
+--
+
+CREATE TABLE `booked` (
+  `id` int(100) NOT NULL,
+  `user_id` int(100) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `address` varchar(500) NOT NULL,
+  `total_products` varchar(1000) NOT NULL,
+  `placed_on` varchar(50) NOT NULL,
+  `booking_date` date DEFAULT NULL,
+  `booking_time` varchar(30) DEFAULT NULL,
+  `payment_status` varchar(20) NOT NULL DEFAULT 'pending',
+  `type` enum('product','table') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data untuk tabel `booked`
+--
+
+INSERT INTO `booked` (`id`, `user_id`, `name`, `email`, `address`, `total_products`, `placed_on`, `booking_date`, `booking_time`, `payment_status`, `type`) VALUES
+(31, 16, 'asdf', '', 'asdf, asdf, asdf - 345', 'Cireng (1) , Meja 1 (1) ', '17-Nov-2023', NULL, NULL, 'pending', 'product');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `carousel`
+--
+
+CREATE TABLE `carousel` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `picture` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data untuk tabel `carousel`
+--
+
+INSERT INTO `carousel` (`id`, `name`, `picture`) VALUES
+(11, 'meja 1', 'uploads/WhatsApp Image 2023-10-21 at 00.45.32_22750f2c.jpg');
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `cart`
 --
 
@@ -34,15 +80,16 @@ CREATE TABLE `cart` (
   `name` varchar(100) NOT NULL,
   `price` int(100) NOT NULL,
   `quantity` int(100) NOT NULL,
-  `image` varchar(100) NOT NULL
+  `image` varchar(100) NOT NULL,
+  `type` enum('product','table') NOT NULL DEFAULT 'product'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data untuk tabel `cart`
 --
 
-INSERT INTO `cart` (`id`, `user_id`, `pid`, `name`, `price`, `quantity`, `image`) VALUES
-(133, 15, 15, 'Creamy Matcha', 20, 1, 'Creamy Matcha.jpg');
+INSERT INTO `cart` (`id`, `user_id`, `pid`, `name`, `price`, `quantity`, `image`, `type`) VALUES
+(133, 15, 15, 'Creamy Matcha', 20, 1, 'Creamy Matcha.jpg', 'product');
 
 -- --------------------------------------------------------
 
@@ -100,19 +147,18 @@ CREATE TABLE `orders` (
   `total_products` varchar(1000) NOT NULL,
   `total_price` int(100) NOT NULL,
   `placed_on` varchar(50) NOT NULL,
-  `No_Meja` varchar(50) NOT NULL,
   `booking_date` date DEFAULT NULL,
   `booking_time` varchar(30) DEFAULT NULL,
-  `payment_status` varchar(20) NOT NULL DEFAULT 'pending'
+  `payment_status` varchar(20) NOT NULL DEFAULT 'pending',
+  `type` enum('product','table') NOT NULL DEFAULT 'product'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data untuk tabel `orders`
 --
 
-INSERT INTO `orders` (`id`, `user_id`, `name`, `number`, `email`, `method`, `address`, `total_products`, `total_price`, `placed_on`, `No_Meja`, `booking_date`, `booking_time`, `payment_status`) VALUES
-(25, 14, 'jonii', '493829', 'joi@s.com', 'cash on delivery', 'mxx, Madiun, jawa timur - 63131', ', Beef Black Pepper (1) , Cireng (1) , Chiken Karage (1) ', 67, 'Meja 1', '14-Nov-2023', '2019-05-04', '1:15pm', 'completed'),
-(26, 16, 'muhammad', '085816024645', 'jugoblackride45@gmail.com', 'cash on delivery', 'Jl.pepaya no 54,rt/rw.003/001, Madiun, jawa timur - 63131', ', Cireng (1) , Beef Black Pepper (1) ', 40, 'Meja 1', '14-Nov-2023', '2019-05-04', '1:15pm', 'completed');
+INSERT INTO `orders` (`id`, `user_id`, `name`, `number`, `email`, `method`, `address`, `total_products`, `total_price`, `placed_on`, `booking_date`, `booking_time`, `payment_status`, `type`) VALUES
+(30, 16, 'asdf', '3254', 'asdf@gmail.com', 'cash on delivery', 'asdf, asdf, asdf - 345', 'Cireng (1) , Meja 1 (1) ', 15, '17-Nov-2023', NULL, NULL, 'pending', 'product');
 
 -- --------------------------------------------------------
 
@@ -173,18 +219,19 @@ CREATE TABLE `tables` (
   `reservation_date` date NOT NULL,
   `description` text NOT NULL,
   `image` varchar(255) NOT NULL,
-  `status` enum('enabled','disabled') DEFAULT 'enabled'
+  `status` enum('enabled','disabled') DEFAULT 'enabled',
+  `status_table` enum('available','unavailable') NOT NULL DEFAULT 'available'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data untuk tabel `tables`
 --
 
-INSERT INTO `tables` (`id_table`, `name`, `reservation_date`, `description`, `image`, `status`) VALUES
-(3, 'Meja 1', '0000-00-00', 'Indoor Sofa', 'balen indoor sofa.jpg', 'enabled'),
-(4, 'Meja 2', '0000-00-00', 'Balen Indoor', 'balen indoor.jpg', 'enabled'),
-(5, 'Meja 3', '0000-00-00', 'Outdoor AC', 'balen outdoor ac.jpg', 'enabled'),
-(7, 'Meja 4', '0000-00-00', 'outdoor', 'balen outdoor meja bundar.jpg', 'enabled');
+INSERT INTO `tables` (`id_table`, `name`, `reservation_date`, `description`, `image`, `status`, `status_table`) VALUES
+(3, 'Meja 1', '0000-00-00', 'Indoor Sofa', 'balen indoor sofa.jpg', 'enabled', 'available'),
+(4, 'Meja 2', '0000-00-00', 'Balen Indoor', 'balen indoor.jpg', 'enabled', 'unavailable'),
+(5, 'Meja 3', '0000-00-00', 'Outdoor AC', 'balen outdoor ac.jpg', 'enabled', 'available'),
+(7, 'Meja 4', '0000-00-00', 'outdoor', 'balen outdoor meja bundar.jpg', 'enabled', 'available');
 
 -- --------------------------------------------------------
 
@@ -227,6 +274,18 @@ CREATE TABLE `wishlist` (
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indeks untuk tabel `booked`
+--
+ALTER TABLE `booked`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `carousel`
+--
+ALTER TABLE `carousel`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indeks untuk tabel `cart`
@@ -287,10 +346,22 @@ ALTER TABLE `wishlist`
 --
 
 --
+-- AUTO_INCREMENT untuk tabel `booked`
+--
+ALTER TABLE `booked`
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+
+--
+-- AUTO_INCREMENT untuk tabel `carousel`
+--
+ALTER TABLE `carousel`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
 -- AUTO_INCREMENT untuk tabel `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=182;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=194;
 
 --
 -- AUTO_INCREMENT untuk tabel `drinks`
@@ -308,7 +379,7 @@ ALTER TABLE `message`
 -- AUTO_INCREMENT untuk tabel `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT untuk tabel `products`
@@ -338,7 +409,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT untuk tabel `wishlist`
 --
 ALTER TABLE `wishlist`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
