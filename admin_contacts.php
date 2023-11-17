@@ -39,7 +39,7 @@ if(isset($_GET['delete'])){
 
 <section class="messages">
 
-   <h1 class="title">Pesan</h1>
+   <h1 class="title">Kritik Saran</h1>
 
    <div class="box-container">
 
@@ -53,7 +53,7 @@ if(isset($_GET['delete'])){
          <p>nama : <span><?php echo $fetch_message['name']; ?></span> </p>
          <p>nomor : <span><?php echo $fetch_message['number']; ?></span> </p>
          <p>email : <span><?php echo $fetch_message['email']; ?></span> </p>
-         <p>pesan : <span><?php echo $fetch_message['message']; ?></span> </p>
+         <p>Kritik Saran : <span><?php echo $fetch_message['message']; ?></span> </p>
          <a href="admin_contacts.php?delete=<?php echo $fetch_message['id']; ?>" onclick="return confirm('delete this message?');" class="delete-btn">delete</a>
       </div>
       <?php

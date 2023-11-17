@@ -48,13 +48,47 @@ if(!isset($user_id)){
             while($fetch_orders = mysqli_fetch_assoc($select_orders)){
     ?>
     <div class="box">
-        <p> tanggal : <span><?php echo $fetch_orders['placed_on']; ?></span> </p>
+        <p> tanggal order : <span><?php echo $fetch_orders['placed_on']; ?></span> </p>
+        <p> tanggal reservasi : <span><?php echo $fetch_orders['booking_date'] ?? '-'; ?></span> </p>
+        <p> waktu reservasi : <span><?php echo $fetch_orders['booking_time'] ?? '-'; ?></span> </p>
         <p> nama : <span><?php echo $fetch_orders['name']; ?></span> </p>
         <p> nomor : <span><?php echo $fetch_orders['number']; ?></span> </p>
         <p> email : <span><?php echo $fetch_orders['email']; ?></span> </p>
         <p> alamat : <span><?php echo $fetch_orders['address']; ?></span> </p>
         <p> metode pembayaran : <span><?php echo $fetch_orders['method']; ?></span> </p>
-        <p> orderan anda : <span><?php echo $fetch_orders['total_products']; ?></span> </p>
+        <?php
+        $listString = $fetch_orders['total_products'];
+        // Remove spaces and split the string into an array using ","
+        $itemArray = explode(",", str_replace(" ", "", $listString));
+
+        $resultMeja = [];
+        $resultProduct = [];
+
+        // Loop through each item and check if it contains "Meja"
+        foreach ($itemArray as $item) {
+            if (strpos($item, "Meja") !== false) {
+                $resultMeja[] = $item;
+            } else {
+              $resultProduct[] = $item;
+            }
+        }
+        ?>
+        <p> orderan anda : <span><?php echo implode(', ', $resultProduct); ?></span> </p>
+        <p> nomor meja : <span>
+          <?php 
+          $resultMejaNumber = [];
+          foreach ($resultMeja as $m) {
+            if (preg_match('/Meja(\d+)\(\d+\)/', $item, $matches)) {
+              $resultMejaNumber[] = $matches[1];
+            }
+          }
+          if (sizeof($resultMejaNumber) > 0) {
+            echo implode(', ', $resultMejaNumber);
+          } else {
+            echo '-';
+          }
+          ?>
+          </span> </p>
         <p> total harga : <span>Rp.<?php echo $fetch_orders['total_price']; ?>/-</span> </p>
         <p> status pembayaran : <span style="color:<?php if($fetch_orders['payment_status'] == 'pending'){echo 'tomato'; }else{echo 'green';} ?>"><?php echo $fetch_orders['payment_status']; ?></span> </p>
     </div>

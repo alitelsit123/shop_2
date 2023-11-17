@@ -50,19 +50,19 @@ if(isset($_POST['send'])){
 <?php @include 'header.php'; ?>
 
 <section class="heading">
-    <h3>Hubungi Kami</h3>
-    <p> <a href="home.php">home</a> / contact </p>
+    <h3>Kritik & Saran Kami</h3>
+    <p> <a href="home.php">home</a> / Kritik Saran </p>
 </section>
 
 <section class="contact">
 
     <form action="" method="POST">
-        <h3>kirim pesan kepada kami!</h3>
+        <h3>kirim kritik saran kepada kami!</h3>
         <input type="text" name="name" placeholder="masukkan nama Anda" class="box" required> 
         <input type="email" name="email" placeholder="masukkan email Anda" class="box" required>
         <input type="number" name="number" placeholder="masukkan nomor Anda" class="box" required>
-        <textarea name="message" class="box" placeholder="masukkan pesan Anda" required cols="30" rows="10"></textarea>
-        <input type="submit" value="Kirim Pesan" name="send" class="btn">
+        <textarea name="message" class="box" placeholder="masukkan Kritik Saran Anda" required cols="30" rows="10"></textarea>
+        <input type="submit" value="Kirim Kritik Saran" name="send" class="btn">
     </form>
 
 </section>

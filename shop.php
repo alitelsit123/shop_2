@@ -39,6 +39,7 @@ if(isset($_POST['add_to_cart'])){
     $product_price = $_POST['product_price'];
     $product_image = $_POST['product_image'];
     $product_quantity = $_POST['product_quantity'];
+    $type = $_POST['type'];
 
     $check_cart_numbers = mysqli_query($conn, "SELECT * FROM `cart` WHERE name = '$product_name' AND user_id = '$user_id'") or die('query failed');
 
@@ -52,7 +53,7 @@ if(isset($_POST['add_to_cart'])){
             mysqli_query($conn, "DELETE FROM `wishlist` WHERE name = '$product_name' AND user_id = '$user_id'") or die('query failed');
         }
 
-        mysqli_query($conn, "INSERT INTO `cart`(user_id, pid, name, price, quantity, image) VALUES('$user_id', '$product_id', '$product_name', '$product_price', '$product_quantity', '$product_image')") or die('query failed');
+        mysqli_query($conn, "INSERT INTO `cart`(user_id, pid, name, price, quantity, image,type) VALUES('$user_id', '$product_id', '$product_name', '$product_price', '$product_quantity', '$product_image','$type')") or die('query failed');
         $message[] = 'produk ditambahkan ke troli';
     }
 
@@ -106,6 +107,7 @@ if(isset($_POST['add_to_cart'])){
          <input type="number" <?= $fetch_products['status'] == 'available' ? '':'disabled' ?> name="product_quantity" value="<?= $fetch_products['status'] == 'available' ? '1':'0' ?>" min="0" class="qty">
 
          <input type="hidden" name="product_id" value="<?php echo $fetch_products['id']; ?>">
+         <input type="hidden" name="type" value="product">
          <input type="hidden" name="product_name" value="<?php echo $fetch_products['name']; ?>">
          <input type="hidden" name="product_price" value="<?php echo $fetch_products['price']; ?>">
          <input type="hidden" name="product_image" value="<?php echo $fetch_products['image']; ?>">
@@ -155,6 +157,7 @@ if(isset($_POST['add_to_cart'])){
          <input type="number" <?= $fetch_products['status'] == 'available' ? '':'disabled' ?> name="product_quantity" value="<?= $fetch_products['status'] == 'available' ? '1':'0' ?>" min="0" class="qty">
 
          <input type="hidden" name="product_id" value="<?php echo $fetch_products['id']; ?>">
+         <input type="hidden" name="type" value="product">
          <input type="hidden" name="product_name" value="<?php echo $fetch_products['name']; ?>">
          <input type="hidden" name="product_price" value="<?php echo $fetch_products['price']; ?>">
          <input type="hidden" name="product_image" value="<?php echo $fetch_products['image']; ?>">
@@ -196,6 +199,7 @@ if(isset($_POST['add_to_cart'])){
           <span style="<?= $fetch_drinks['status'] == 'unavailable' ? 'background-color: red; color:white;':'background-color: green; color:white;' ?> padding: .75rem;font-size: 1rem;margin-left: 1rem;border-radius: 7px;"><?php echo $fetch_drinks['status'] == 'available' ? 'Tersedia':'Tidak Tersedia'; ?></span>
         </div>
          <input type="hidden" name="product_id" value="<?php echo $fetch_drinks['id_drinks']; ?>">
+         <input type="hidden" name="type" value="product">
          <input type="hidden" name="product_name" value="<?php echo $fetch_drinks['name']; ?>">
          <input type="hidden" name="product_price" value="<?php echo $fetch_drinks['price']; ?>">
          <input type="hidden" name="product_image" value="<?php echo $fetch_drinks['image']; ?>">

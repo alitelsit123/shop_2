@@ -5,8 +5,8 @@
         <div class="box">
             <h3>quick links</h3>
             <a href="home.php">home</a>
-            <a href="about.php">about</a>
-            <a href="contact.php">contact</a>
+            <a href="about.php">Profil</a>
+            <a href="contact.php">Kritik Saran</a>
             <a href="shop.php">shop</a>
         </div>
 
@@ -20,10 +20,9 @@
 
         <div class="box">
             <h3>contact info</h3>
-            <p> <i class="fas fa-phone"></i> 081217004238 </p>
-            <p> <i class="fas fa-phone"></i> 085707747459 </p>
-            <p> <i class="fas fa-envelope"></i> husnarizka@gmail.com </p>
-            <p> <i class="fas fa-map-marker-alt"></i> Magetan, Jawa Timur, Indonesia, 63882 </p>
+            <p> <i class="fas fa-phone"></i> 082264656699 </p>
+            <p> <i class="fas fa-envelope"></i> balencoffee@gmail.com </p>
+            <p> <i class="fas fa-map-marker-alt"></i> Jl. Kemiri no. 19, Taman Kec. Taman, Kota Madiun, Jawa Timur 63118 </p>
         </div>
 
         <div class="box">
@@ -36,6 +35,6 @@
 
     </div>
 
-    <div class="credit">&copy; copyright @ <?php echo date('Y'); ?> by <span>Rizka Latifatul Husna</span> </div>
+    <div class="credit">&copy; copyright @ <?php echo date('Y'); ?> by <span>balen coffee madiun</span> </div>
 
 </section>

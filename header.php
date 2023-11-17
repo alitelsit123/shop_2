@@ -22,14 +22,13 @@ if(isset($message)){
         <li><a href="home.php">Home</a></li>
         <li><a href="#">Pages +</a>
             <ul>
-                <li><a href="about.php">profile</a></li>
-                <li><a href="contact.php">contact</a></li>
+                <li><a href="about.php">Profile</a></li>
+                <li><a href="contact.php">Kritik Saran</a></li>
             </ul>
         </li>
         <li><a href="shop.php">Shop</a></li>
         <li><a href="orders.php">Orders</a></li>
         <li><a href="reservation.php">Table</a></li> 
-        <li><a href="booked.php">Reservation</a></li>
         <li><a href="#">account +</a>
             <ul>
                 <li><a href="login.php">login</a></li>
@@ -53,11 +52,7 @@ if(isset($message)){
                 $cart_num_rows = mysqli_num_rows($select_cart_count);
             ?>
             <a href="cart.php"><i class="fas fa-shopping-cart"></i><span>(<?php echo $cart_num_rows; ?>)</span></a>
-            <?php
-                $select_cart_count = mysqli_query($conn, "SELECT * FROM `reservasi` WHERE user_id = '$user_id'") or die('query failed');
-                $cart_num_rows = mysqli_num_rows($select_cart_count);
-            ?>
-            <a href="reservation_process.php"><i class="fas fa-book"></i><span>(<?php echo $cart_num_rows; ?>)</span></a>
+            
         </div>
 
         <div class="account-box">

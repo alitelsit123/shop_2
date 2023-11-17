@@ -15,6 +15,7 @@ if(isset($_POST['add_to_cart'])){
     $product_id = $_POST['product_id'];
     $product_name = $_POST['product_name'];
     $product_image = $_POST['product_image'];
+    $type = $_POST['type'];
 
     $check_cart_numbers = mysqli_query($conn, "SELECT * FROM `cart` WHERE name = '$product_name' AND user_id = '$user_id'") or die('query failed');
 
@@ -29,7 +30,7 @@ if (mysqli_num_rows($check_wishlist_numbers) > 0) {
     mysqli_query($conn, "DELETE FROM `wishlist` WHERE name = '$product_name' AND user_id = '$user_id'") or die('query failed');
 }
 
-mysqli_query($conn, "INSERT INTO `cart` (user_id, pid, name, image) VALUES ('$user_id', '$product_id', '$product_name', '$product_image')") or die('query failed');
+mysqli_query($conn, "INSERT INTO `cart` (user_id, pid, name, image,quantity,type) VALUES ('$user_id', '$product_id', '$product_name', '$product_image', 1,'$type')") or die('query failed');
 $message[] = 'Produk ditambahkan ke troli';
 
     }
@@ -81,12 +82,13 @@ $message[] = 'Produk ditambahkan ke troli';
           <span style="<?= $fetch_table['status_table'] == 'unavailable' ? 'background-color: red; color:white;':'background-color: green; color:white;' ?> padding: .75rem;font-size: 1rem;margin-left: 1rem;border-radius: 7px;"><?php echo $fetch_table['status_table'] == 'available' ? 'Tersedia':'Tidak Tersedia'; ?></span>
          </div>
          <input type="hidden" name="product_id" value="<?php echo $fetch_table['id_table']; ?>">
+         <input type="hidden" name="type" value="table">
          <input type="hidden" name="product_name" value="<?php echo $fetch_table['name']; ?>">
          <input type="hidden" name="product_image" value="<?php echo $fetch_table['image']; ?>">
          <?php if($fetch_table['status_table'] == 'available'): ?>
          <input type="submit" value="Reservasi" name="add_to_cart" class="btn">
          <?php else: ?>
-         <input type="button" value="Tambah Ke Keranjang" name="add_to_cart" class="btn" style="cursor: not-allowed; opacity: .7;">
+         <input type="button" value="Reservasi" name="add_to_cart" class="btn" style="cursor: not-allowed; opacity: .7;">
          <?php endif; ?>
       </form>
       <?php

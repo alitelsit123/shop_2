@@ -20,7 +20,7 @@ if(isset($_POST['order'])){
     $placed_on = date('d-M-Y');
 
     $cart_total = 0;
-    $cart_products[] = '';
+    $cart_products = [];
 
     $cart_query = mysqli_query($conn, "SELECT * FROM `cart` WHERE user_id = '$user_id'") or die('query failed');
     if (mysqli_num_rows($cart_query) > 0) {
@@ -33,6 +33,8 @@ if(isset($_POST['order'])){
             }
         }
     }
+
+    $total_products = implode(', ',$cart_products);
 
     $order_query = mysqli_query($conn, "SELECT * FROM `orders` WHERE name = '$name' AND number = '$number' AND email = '$email' AND method = '$method' AND address = '$address' AND total_products = '$total_products' AND total_price = '$cart_total'") or die('query failed');
 

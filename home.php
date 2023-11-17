@@ -82,8 +82,8 @@ if(isset($_POST['add_to_cart'])){
 <section class="home">
 
    <div class="content">
-      <h3>new collections</h3>
-      <p>Toko Tanaman Hias Tobitabi Mempunyai Banyak Koleksi Terbaru</p>
+      <h3>BALEN COFFEE MADIUN</h3>
+      <p>Jl. Kemiri no. 19, Taman Kec. Taman, Kota Madiun, Jawa Timur 63118</p>
       <a href="about.php" class="btn">Temukan Lebih Banyak</a>
    </div>
 
@@ -91,7 +91,7 @@ if(isset($_POST['add_to_cart'])){
 
 <section class="products">
 
-   <h1 class="title">Produk Terbaru</h1>
+   <h1 class="title">Produk Kami</h1>
 
    <div class="box-container">
 

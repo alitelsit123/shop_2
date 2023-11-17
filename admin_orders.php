@@ -58,12 +58,46 @@ if(isset($_GET['delete'])){
       ?>
       <div class="box">
          <p> user id : <span><?php echo $fetch_orders['user_id']; ?></span> </p>
-         <p> Waktu : <span><?php echo $fetch_orders['placed_on']; ?></span> </p>
+         <p> Tanggal Order : <span><?php echo $fetch_orders['placed_on']; ?></span> </p>
+          <p> Tanggal Reservasi : <span><?php echo $fetch_orders['booking_date'] ?? '-'; ?></span> </p>
+          <p> Waktu Reservasi : <span><?php echo $fetch_orders['booking_time'] ?? '-'; ?></span> </p>
          <p> nama : <span><?php echo $fetch_orders['name']; ?></span> </p>
          <p> nomor : <span><?php echo $fetch_orders['number']; ?></span> </p>
          <p> email : <span><?php echo $fetch_orders['email']; ?></span> </p>
          <p> alamat : <span><?php echo $fetch_orders['address']; ?></span> </p>
-         <p> total produk : <span><?php echo $fetch_orders['total_products']; ?></span> </p>
+         <?php
+        $listString = $fetch_orders['total_products'];
+        // Remove spaces and split the string into an array using ","
+        $itemArray = explode(",", str_replace(" ", "", $listString));
+
+        $resultMeja = [];
+        $resultProduct = [];
+
+        // Loop through each item and check if it contains "Meja"
+        foreach ($itemArray as $item) {
+            if (strpos($item, "Meja") !== false) {
+                $resultMeja[] = $item;
+            } else {
+              $resultProduct[] = $item;
+            }
+        }
+        ?>
+         <p> total produk : <span><?php echo implode(', ', $resultProduct); ?></span> </p>
+         <p> nomor meja : <span>
+          <?php 
+          $resultMejaNumber = [];
+          foreach ($resultMeja as $m) {
+            if (preg_match('/Meja(\d+)\(\d+\)/', $item, $matches)) {
+              $resultMejaNumber[] = $matches[1];
+            }
+          }
+          if (sizeof($resultMejaNumber) > 0) {
+            echo implode(', ', $resultMejaNumber);
+          } else {
+            echo '-';
+          }
+          ?>
+          </span> </p>
          <p> total harga : <span>$<?php echo $fetch_orders['total_price']; ?>/-</span> </p>
          <p> metode pembayaran : <span><?php echo $fetch_orders['method']; ?></span> </p>
          <form action="" method="post">
