@@ -78,7 +78,7 @@ if(!isset($user_id)){
           <?php 
           $resultMejaNumber = [];
           foreach ($resultMeja as $m) {
-            if (preg_match('/Meja(\d+)\(\d+\)/', $item, $matches)) {
+            if (preg_match('/Meja\s?(\d+)\s?\(\d+\)/', $item, $matches)) {
               $resultMejaNumber[] = $matches[1];
             }
           }
