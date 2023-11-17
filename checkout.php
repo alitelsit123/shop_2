@@ -118,10 +118,8 @@ if(isset($_POST['order'])){
             <div class="inputBox">
                 <span>Metode Pembayaran :</span>
                 <select name="method">
-                    <option value="cash on delivery">Transfer BRI</option>
-                    <option value="credit card">Transfer BNI</option>
-                    <option value="paypal">Transfer BCA</option>
-                    <option value="paytm">Transfer MANDIRI</option>
+                    <option value="cod">COD</option>
+                    <option value="bca">Transfer BCA</option>
                 </select>
             </div>
             <div class="inputBox">

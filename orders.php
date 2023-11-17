@@ -20,11 +20,16 @@ if(!isset($user_id)){
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Order</title>
 
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
    <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
    <!-- custom admin css file link  -->
    <link rel="stylesheet" href="css/style.css">
+
+   
 
 </head>
 <body>
@@ -37,6 +42,19 @@ if(!isset($user_id)){
 </section>
 
 <section class="placed-orders">
+
+<div class="box-container mb-5">
+  <div class="box">
+    <div class="alert" role="alert">
+      <h4 class="alert-heading">Cara Bayar</h4>
+      <p>Kirim bukti transfer ke Whatsapp (08xxx-xxx-xxx) jika menggunakan transfer</p>
+      <p>Silahkan transfer ke rekening BCA (xxx111001010) An. xxx-xxx</p>
+      <p>
+        atau lewat QRIS <br /><img src="./images/qris.jpeg" alt="" srcset="" width="300px" height="300px">
+      </p>
+    </div>
+  </div>
+</div>
 
     <h1 class="title">Memesan</h1>
 
@@ -55,7 +73,15 @@ if(!isset($user_id)){
         <p> nomor : <span><?php echo $fetch_orders['number']; ?></span> </p>
         <p> email : <span><?php echo $fetch_orders['email']; ?></span> </p>
         <p> alamat : <span><?php echo $fetch_orders['address']; ?></span> </p>
-        <p> metode pembayaran : <span><?php echo $fetch_orders['method']; ?></span> </p>
+        <p> metode pembayaran : <span>
+          <?php 
+          if ($fetch_orders['method'] == 'cod') {
+            echo 'Cash On Delivery';
+          } else {
+            echo 'Transfer '.$fetch_orders['method'];
+          }
+          ?>
+        </span> </p>
         <?php
         $listString = $fetch_orders['total_products'];
         // Remove spaces and split the string into an array using ","
