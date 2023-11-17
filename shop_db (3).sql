@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 17 Nov 2023 pada 03.30
+-- Waktu pembuatan: 17 Nov 2023 pada 05.55
 -- Versi server: 10.4.28-MariaDB
 -- Versi PHP: 8.2.4
 
@@ -41,13 +41,6 @@ CREATE TABLE `booked` (
   `type` enum('product','table') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data untuk tabel `booked`
---
-
-INSERT INTO `booked` (`id`, `user_id`, `name`, `email`, `address`, `total_products`, `placed_on`, `booking_date`, `booking_time`, `payment_status`, `type`) VALUES
-(31, 16, 'asdf', '', 'asdf, asdf, asdf - 345', 'Cireng (1) , Meja 1 (1) ', '17-Nov-2023', NULL, NULL, 'pending', 'product');
-
 -- --------------------------------------------------------
 
 --
@@ -83,13 +76,6 @@ CREATE TABLE `cart` (
   `image` varchar(100) NOT NULL,
   `type` enum('product','table') NOT NULL DEFAULT 'product'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data untuk tabel `cart`
---
-
-INSERT INTO `cart` (`id`, `user_id`, `pid`, `name`, `price`, `quantity`, `image`, `type`) VALUES
-(133, 15, 15, 'Creamy Matcha', 20, 1, 'Creamy Matcha.jpg', 'product');
 
 -- --------------------------------------------------------
 
@@ -152,13 +138,6 @@ CREATE TABLE `orders` (
   `payment_status` varchar(20) NOT NULL DEFAULT 'pending',
   `type` enum('product','table') NOT NULL DEFAULT 'product'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data untuk tabel `orders`
---
-
-INSERT INTO `orders` (`id`, `user_id`, `name`, `number`, `email`, `method`, `address`, `total_products`, `total_price`, `placed_on`, `booking_date`, `booking_time`, `payment_status`, `type`) VALUES
-(30, 16, 'asdf', '3254', 'asdf@gmail.com', 'cash on delivery', 'asdf, asdf, asdf - 345', 'Cireng (1) , Meja 1 (1) ', 15, '17-Nov-2023', NULL, NULL, 'pending', 'product');
 
 -- --------------------------------------------------------
 
@@ -349,7 +328,7 @@ ALTER TABLE `wishlist`
 -- AUTO_INCREMENT untuk tabel `booked`
 --
 ALTER TABLE `booked`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT untuk tabel `carousel`
@@ -361,7 +340,7 @@ ALTER TABLE `carousel`
 -- AUTO_INCREMENT untuk tabel `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=194;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=200;
 
 --
 -- AUTO_INCREMENT untuk tabel `drinks`
@@ -379,7 +358,7 @@ ALTER TABLE `message`
 -- AUTO_INCREMENT untuk tabel `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT untuk tabel `products`
