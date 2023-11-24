@@ -82,8 +82,6 @@ if(isset($_POST['add_to_cart'])){
 <section class="home">
 
    <div class="content">
-      <h3>BALEN COFFEE MADIUN</h3>
-      <p>Jl. Kemiri no. 19, Taman Kec. Taman, Kota Madiun, Jawa Timur 63118</p>
       <a href="about.php" class="btn">Temukan Lebih Banyak</a>
    </div>
 
@@ -96,7 +94,7 @@ if(isset($_POST['add_to_cart'])){
    <div class="box-container">
 
       <?php
-       $select_products = mysqli_query($conn, "SELECT * FROM `products`  ORDER BY id  DESC LIMIT 6") or die('query failed');
+       $select_products = mysqli_query($conn, "SELECT * FROM `products`  ORDER BY id  DESC LIMIT 4") or die('query failed');
        if(mysqli_num_rows($select_products) > 0){
            while($fetch_products = mysqli_fetch_assoc($select_products)){
       ?>
@@ -132,7 +130,7 @@ if(isset($_POST['add_to_cart'])){
 
    <div class="content">
       <h3>have any questions?</h3>
-      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Distinctio officia aliquam quis saepe? Quia, libero.</p>
+      <p></p>
       <a href="contact.php" class="btn">contact us</a>
    </div>
 

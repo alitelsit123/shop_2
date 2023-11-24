@@ -10,19 +10,30 @@ if(isset($message)){
    }
 }
 ?>
+<link rel="stylesheet" href="css/style.css">
 
 <header class="header">
 
    <div class="flex">
 
-      <a href="admin_page.php" class="logo">Admin<span>Panel</span></a>
+      <a href="admin_page.php" class="logo">Admin_<span>Balen Coffee </span></a>
 
       <nav class="navbar">
-         <a href="admin_page.php">Home</a>
-         <a href="admin_products.php">Produk</a>
-         <a href="admin_orders.php">Order</a>
-         <a href="admin_users.php">User</a>
-         <a href="admin_contacts.php">Kritik Saran</a>
+         
+         <ul>
+        <li><a href="admin_page.php">Home</a></li>
+        <li><a href="#">Products +</a>
+            <ul>
+                <li><a href="admin_products.php">Makanan</a></li>
+                <li><a href="admin_products.php?v=minuman">Minuman</a></li>
+                <li><a href="admin_products.php?v=table">Table</a></li>
+            </ul>
+        </li>
+        <li><a href="admin_orders.php">Orders</a></li>
+        <li><a href="admin_users.php">User</a></li>
+        <li><a href="admin_contacts.php">Kritik Saran</a></li>
+
+    </ul>
       </nav>
 
       <div class="icons">

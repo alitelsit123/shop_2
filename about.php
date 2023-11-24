@@ -48,13 +48,13 @@ if(!isset($user_id)){
   </div>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="https://static.wixstatic.com/media/5e0bdd_8402ac74ac6c43309652b181642a64f7~mv2.jpg/v1/fill/w_1024,h_477,al_c,q_85,enc_auto/5e0bdd_8402ac74ac6c43309652b181642a64f7~mv2.jpg" class="d-block w-100" alt="...">
+      <img src="./images/fotprod.jpg" class="d-block w-100" alt="...">
     </div>
     <div class="carousel-item">
-      <img src="https://static.wixstatic.com/media/5e0bdd_8402ac74ac6c43309652b181642a64f7~mv2.jpg/v1/fill/w_1024,h_477,al_c,q_85,enc_auto/5e0bdd_8402ac74ac6c43309652b181642a64f7~mv2.jpg" class="d-block w-100" alt="...">
+      <img src="./images/fotprod.jpg" class="d-block w-100" alt="...">
     </div>
     <div class="carousel-item">
-      <img src="https://static.wixstatic.com/media/5e0bdd_8402ac74ac6c43309652b181642a64f7~mv2.jpg/v1/fill/w_1024,h_477,al_c,q_85,enc_auto/5e0bdd_8402ac74ac6c43309652b181642a64f7~mv2.jpg" class="d-block w-100" alt="...">
+      <img src="./images/fotprod.jpg" class="d-block w-100" alt="...">
     </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev" style="background: #8080804a;">
@@ -143,12 +143,11 @@ if(!isset($user_id)){
     <div class="flex">
 
         <div class="image">
-            <img src="images/about-img-01.jpg" alt="">
+            <img src="images/beeff.jpg" alt="">
         </div>
 
         <div class="content">
             <h3>Menu Makanan</h3>
-            <p>Toko Tobitabi memiliki banyak sekali koleksi tanaman hias terbaik dengan harga terjangkau pastinya.</p>
             <a href="shop.php#makanan" class="btn">Lihat Selengkapnya</a>
         </div>
 
@@ -158,12 +157,11 @@ if(!isset($user_id)){
 
         <div class="content">
             <h3>Menu Minuman</h3>
-            <p>Toko Tobitabi menyediakan berbagai macam tanaman hias yang menarik dengan keadaan yang segar-segar.</p>
             <a href="shop.php#minuman" class="btn">Lihat Selengkapnya</a>
         </div>
 
         <div class="image">
-            <img src="images/about-img-02.jpg" alt="">
+            <img src="images/latte.jpg" alt="">
         </div>
 
     </div>
@@ -176,7 +174,6 @@ if(!isset($user_id)){
 
         <div class="content">
             <h3>Tempat</h3>
-            <p>Toko Tobitabi merupakan toko yang menyediakan berbagai jenis tanaman hias.</p>
             <a href="reservation.php" class="btn">Lihat Selengkapnya</a>
         </div>
 
@@ -186,26 +183,28 @@ if(!isset($user_id)){
 
 <section class="reviews" id="reviews">
 
-    <h1 class="title">client's reviews</h1>
+    <h1 class="title">Reviews</h1>
 
     <div class="box-container">
 
         <div class="box">
-            <img src="images/pic-1.png" alt="">
-            <p>Pelayanannya sangatlah ramah dan menyenangkan.</p>
+            <img src="images/pic-4.png" alt="">
+            <p>tempatnya cozy banget, bisa buat nge chill di sore hari maupun nugas. Makanan dan minumannya enak2. Oiya, wajib banget cobain specialty balen sm katsu curry nya. 
+              Sansekertanya juga enak seger. Parkirannya luas. Pelayanannya ramah dan komunikatif</p>
             <div class="stars">
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
-                <i class="fas fa-star-half-alt"></i>
+                <i class="fas fa-star"></i>
             </div>
-            <h3>john deo</h3>
+            <h3>Vinda</h3>
         </div>
 
         <div class="box">
             <img src="images/pic-2.png" alt="">
-            <p>Tempatnya bersih, rapi, dan nyaman.</p>
+            <p>lokasinya dekat dengan lapangan gulun sehingga aksesnya mudah. tersedia indoor, outdoor dan semi. parkirannya luas, pelayanannya ramah. harganya standar kaya cafe pada umumnya. 
+              japanese katsu nya enak, dan lumayan ngenyangin rate 4,8/5 (wajib pesan kalo datang dalam keadaan laper). nyoba pesen non-coffee nya yang kalem, perpaduan jelly sm mangga rate nya 4/5. snacknya beli mix platter, mayo sm saosnya enak, dibumbui dengan baikk rate nya 4,5/5.</p>
             <div class="stars">
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
@@ -213,59 +212,47 @@ if(!isset($user_id)){
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star-half-alt"></i>
             </div>
-            <h3>john deo</h3>
+            <h3>pluviophile</h3>
         </div>
 
         <div class="box">
             <img src="images/pic-3.png" alt="">
-            <p>minumannya segar-segar.</p>
+            <p>sejauh ini tempat sudah oke dan nyaman bangett, yg buat agak terbatas soalnya bagian belakang masih di renov. disediakan tempat buat ibadah juga. makanannya enak2 brokolinga kenyal empuk bgt 😭💗
+               chicken katsu curry nya juga murah tapi rasanya kaya di resto skaksksk love it nyobain minuman based soda nya seger bgt manisnya pas, trus takeaway buat kopi juga enakk. plusnya staff disana juga membantu bangett hihi</p>
             <div class="stars">
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
-                <i class="fas fa-star-half-alt"></i>
+                <i class="fas fa-star"></i>
             </div>
-            <h3>john deo</h3>
+            <h3>Wildah Azmah Azizah</h3>
         </div>
 
         <div class="box">
-            <img src="images/pic-4.png" alt="">
-            <p>Rekomendasi sekali harganya oke dan kualitas menunya juga oke.</p>
+            <img src="images/pic-1.png" alt="">
+            <p>Cocok buat kalian yang mau cari referensi baru dengan suasana yang lumayan oxxee, pastinya dengan sebuah keramahan barista dan pelayanan yang menjadi sebuah kalcer pada saat kalian disini, terutama kalcer ngopi pagi✌🏻</p>
             <div class="stars">
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
-                <i class="fas fa-star-half-alt"></i>
+                <i class="fas fa-star"></i>
             </div>
-            <h3>john deo</h3>
+            <h3>Ghifari Daffa</h3>
         </div>
 
         <div class="box">
             <img src="images/pic-5.png" alt="">
-            <p>Tempatnya aesthetic banget bisa dibuat spot foto.</p>
+            <p>Baru ini nemu coffeeshop yg kopinya enak di Madiun ❤️</p>
             <div class="stars">
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
-                <i class="fas fa-star-half-alt"></i>
+                <i class="fas fa-star"></i>
             </div>
-            <h3>john deo</h3>
-        </div>
-
-        <div class="box">
-            <img src="images/pic-6.png" alt="">
-            <p>Nyesel sih kenapa ngak tau balen coffee dari dulu aja harganya murah, pelayannya ramah.</p>
-            <div class="stars">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star-half-alt"></i>
-            </div>
-            <h3>john deo</h3>
+            <h3>Almira ef</h3>
         </div>
 
     </div>

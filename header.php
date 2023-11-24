@@ -11,11 +11,17 @@ if(isset($message)){
 }
 ?>
 
+<style>
+  a {
+    text-decoration: none;
+  }
+</style>
+
 <header class="header">
 
     <div class="flex">
 
-        <a href="home.php" class="logo">Balen</a>
+        <a href="home.php" class="logo">Balen Coffee</a>
 
         <nav class="navbar">
     <ul>
@@ -26,8 +32,8 @@ if(isset($message)){
                 <li><a href="contact.php">Kritik Saran</a></li>
             </ul>
         </li>
-        <li><a href="shop.php">Shop</a></li>
-        <li><a href="orders.php">Orders</a></li>
+        <li><a href="shop.php">Menu</a></li>
+        <li><a href="orders.php">Reservasi</a></li>
         <li><a href="reservation.php">Table</a></li> 
         <li><a href="#">account +</a>
             <ul>

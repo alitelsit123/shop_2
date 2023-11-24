@@ -30,7 +30,7 @@ if (mysqli_num_rows($check_wishlist_numbers) > 0) {
     mysqli_query($conn, "DELETE FROM `wishlist` WHERE name = '$product_name' AND user_id = '$user_id'") or die('query failed');
 }
 
-mysqli_query($conn, "INSERT INTO `cart` (user_id, pid, name, image,quantity,type) VALUES ('$user_id', '$product_id', '$product_name', '$product_image', 1,'$type')") or die('query failed');
+mysqli_query($conn, "INSERT INTO `cart` (user_id, pid, name, image,quantity,type,price) VALUES ('$user_id', '$product_id', '$product_name', '$product_image', 1,'$type',0)") or die(mysqli_error($conn));
 $message[] = 'Produk ditambahkan ke troli';
 
     }

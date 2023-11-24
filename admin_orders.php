@@ -100,6 +100,17 @@ if(isset($_GET['delete'])){
           </span> </p>
          <p> total harga : <span>$<?php echo $fetch_orders['total_price']; ?>/-</span> </p>
          <p> metode pembayaran : <span><?php echo $fetch_orders['method']; ?></span> </p>
+         <p style="display: flex; align-items:center;"> 
+           bukti bayar : &nbsp;&nbsp;&nbsp;
+          <?php
+          if($fetch_orders["eot"])
+            echo '<img src="images/upload/'.$fetch_orders["eot"].'" width="200px" height="auto" />';
+          else {
+            echo '-';
+          }
+
+          ?> 
+        </p>
          <form action="" method="post">
             <input type="hidden" name="order_id" value="<?php echo $fetch_orders['id']; ?>">
             <select name="update_payment">

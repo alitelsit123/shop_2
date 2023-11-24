@@ -151,7 +151,7 @@ section{
 
 .heading h3{
    font-size: 5.5rem;
-   color:var(--white);
+   color:var(--black);
    text-transform: uppercase;
 }
 
@@ -161,7 +161,7 @@ section{
 }
 
 .heading p a{
-   color:var(--pink);
+   color:var(--light-white);
 }
 
 .heading p a:hover{
@@ -347,7 +347,7 @@ section{
 
 .home{
    min-height: 60vh;
-   background:url(../images/home-bg.png) no-repeat;
+   background:url(../images/BALENN.jpg) no-repeat;
    background-size: cover;
    background-position: center;
    display: flex;
@@ -556,7 +556,7 @@ section{
 .about .flex .content p{
    padding:1rem 0;
    font-size: 1.5rem;
-   color:var(--light-color);
+   color:var(--bold-color);
    line-height: 2;
 }
 
