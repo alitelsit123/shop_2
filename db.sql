@@ -35,7 +35,7 @@ CREATE TABLE `booked` (
   `payment_status` varchar(20) NOT NULL DEFAULT 'pending',
   `type` enum('product','table') NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -44,7 +44,6 @@ CREATE TABLE `booked` (
 
 LOCK TABLES `booked` WRITE;
 /*!40000 ALTER TABLE `booked` DISABLE KEYS */;
-INSERT INTO `booked` VALUES (35,16,'afsdfwe','-','wssdfsdf, asdfwef, - - 0','Beef Black Pepper (1) ,Meja 3 (1) ','24-Nov-2023','2023-11-25','15:30','pending','product'),(36,16,'sdfawe','-','fwefwef, asdf, - - 0','Meja 1 (1) ,Beef Black Pepper (1) ','24-Nov-2023','2023-11-22','15:00','pending','product'),(37,16,'asdf','-','sfwef, adfsas, - - 0','Meja 4 (1) ,Cireng (1) ','24-Nov-2023','2023-11-04','15:30','pending','product'),(38,16,'fasdf','-','fsafsdf, sdf, - - 0','Meja 1 (2) ,Beef Black Pepper (1) ','24-Nov-2023','2023-12-08','15:30','pending','product');
 /*!40000 ALTER TABLE `booked` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -90,7 +89,7 @@ CREATE TABLE `cart` (
   `image` varchar(100) NOT NULL,
   `type` enum('product','table') NOT NULL DEFAULT 'product',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=209 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=215 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -99,6 +98,7 @@ CREATE TABLE `cart` (
 
 LOCK TABLES `cart` WRITE;
 /*!40000 ALTER TABLE `cart` DISABLE KEYS */;
+INSERT INTO `cart` VALUES (212,16,22,'Cireng',15,1,'Cireng.jpg','product'),(213,16,21,'Beef Black Pepper',25,1,'Beef.jpg','product'),(214,16,5,'Meja 3',0,1,'balen outdoor ac.jpg','table');
 /*!40000 ALTER TABLE `cart` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -112,7 +112,7 @@ DROP TABLE IF EXISTS `drinks`;
 CREATE TABLE `drinks` (
   `id_drinks` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
-  `price` decimal(10,3) NOT NULL,
+  `price` bigint(20) DEFAULT NULL,
   `details` text DEFAULT NULL,
   `image` varchar(255) NOT NULL,
   `status` enum('available','unavailable') NOT NULL DEFAULT 'available',
@@ -126,7 +126,7 @@ CREATE TABLE `drinks` (
 
 LOCK TABLES `drinks` WRITE;
 /*!40000 ALTER TABLE `drinks` DISABLE KEYS */;
-INSERT INTO `drinks` VALUES (21,'Banana Surprise',18.000,'Aroma Pisang yang mengejutkan','Banana Surprise.jpg','unavailable'),(22,'Aromanis',20.000,'Kopi Susu rasa permen kapas','Aromanis.jpg','unavailable'),(23,'Americano',15.000,'Paduan Espresso dengan air putih','Americano.jpg','available');
+INSERT INTO `drinks` VALUES (21,'Banana Surprise',18,'Aroma Pisang yang mengejutkan','Banana Surprise.jpg','unavailable'),(22,'Aromanis',20,'Kopi Susu rasa permen kapas','Aromanis.jpg','unavailable'),(23,'Americano',15,'Paduan Espresso dengan air putih','Americano.jpg','available');
 /*!40000 ALTER TABLE `drinks` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -181,7 +181,7 @@ CREATE TABLE `orders` (
   `type` enum('product','table') NOT NULL DEFAULT 'product',
   `eot` text DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -190,7 +190,6 @@ CREATE TABLE `orders` (
 
 LOCK TABLES `orders` WRITE;
 /*!40000 ALTER TABLE `orders` DISABLE KEYS */;
-INSERT INTO `orders` VALUES (34,16,'asdfsdf','234234','-','cod','xfsdf, wefwef, - - 0','Chiken Karage (1) ',27,'24-Nov-2023','2023-11-25','16:00','pending','product','B3X_N11IAAIYf0y.jpg'),(35,16,'afsdfwe','56345345','-','cod','wssdfsdf, asdfwef, - - 0','Beef Black Pepper (1) ,Meja 3 (1) ',25,'24-Nov-2023','2023-11-25','15:30','pending','product','download.jpeg'),(36,16,'sdfawe','35234','-','cod','fwefwef, asdf, - - 0','Meja 1 (1) ,Beef Black Pepper (1) ',25,'24-Nov-2023','2023-11-22','15:00','pending','product','B3X_N11IAAIYf0y.jpg'),(37,16,'asdf','2345234','-','cod','sfwef, adfsas, - - 0','Meja 4 (1) ,Cireng (1) ',15,'24-Nov-2023','2023-11-04','15:30','pending','product','B3X_N11IAAIYf0y.jpg'),(38,16,'fasdf','3645345','-','cod','fsafsdf, sdf, - - 0','Meja 1 (2) ,Beef Black Pepper (1) ',25,'24-Nov-2023','2023-12-08','15:30','pending','product','B3X_N11IAAIYf0y.jpg');
 /*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -205,7 +204,7 @@ CREATE TABLE `products` (
   `id` int(100) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
   `details` varchar(500) NOT NULL,
-  `price` decimal(10,3) NOT NULL,
+  `price` bigint(20) DEFAULT NULL,
   `image` varchar(100) NOT NULL,
   `status` enum('available','unavailable') NOT NULL DEFAULT 'available',
   PRIMARY KEY (`id`)
@@ -218,7 +217,7 @@ CREATE TABLE `products` (
 
 LOCK TABLES `products` WRITE;
 /*!40000 ALTER TABLE `products` DISABLE KEYS */;
-INSERT INTO `products` VALUES (15,'Chiken Karage','Lorem ipsum dolor sit amet ',27.000,'Chiken Karage.jpg','unavailable'),(21,'Beef Black Pepper','Nasi dengan potongan Daging Sapi',25.000,'Beef.jpg','available'),(22,'Cireng','Cireng dengan petis',15.000,'Cireng.jpg','available');
+INSERT INTO `products` VALUES (15,'Chiken Karage','Lorem ipsum dolor sit amet ',27000,'Chiken Karage.jpg','unavailable'),(21,'Beef Black Pepper','Nasi dengan potongan Daging Sapi',25,'Beef.jpg','available'),(22,'Cireng','Cireng dengan petis',15,'Cireng.jpg','available');
 /*!40000 ALTER TABLE `products` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -343,4 +342,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-11-24 12:39:55
+-- Dump completed on 2023-11-25 13:08:37

@@ -24,9 +24,10 @@ if(isset($message)){
         <li><a href="admin_page.php">Home</a></li>
         <li><a href="#">Products +</a>
             <ul>
-                <li><a href="admin_products.php">Makanan</a></li>
+                <li><a href="admin_products.php?v=makan">Makanan</a></li>
                 <li><a href="admin_products.php?v=minuman">Minuman</a></li>
                 <li><a href="admin_products.php?v=table">Table</a></li>
+                <li><a href="admin_products.php?v=add">Tambah Barang</a></li>
             </ul>
         </li>
         <li><a href="admin_orders.php">Orders</a></li>

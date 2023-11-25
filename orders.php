@@ -128,7 +128,6 @@ if(isset($_POST['submitupload'])){
 
         $resultMeja = [];
         $resultProduct = [];
-
         // Loop through each item and check if it contains "Meja"
         foreach ($itemArray as $item) {
             if (strpos($item, "Meja") !== false) {
@@ -186,8 +185,10 @@ if(isset($_POST['submitupload'])){
                       <?php
                       $itemRow = null;
                       $itemString = '';
+                      $qty = 1;
                       if (preg_match('/[a-zA-Z0-9]+\s?(\(\d+\))/', $item, $matches)) {
                         $itemString = str_replace($matches[1], '', $item);
+                        $qty = str_replace('(', '', str_replace(')', '', $matches[1]));
                       }
                       $select_orders_item_makanan = mysqli_query($conn, "SELECT * FROM `products` WHERE name = '$itemString'") or die('query failed');
                       $select_orders_item_minuman = mysqli_query($conn, "SELECT * FROM `drinks` WHERE name = '$itemString'") or die('query failed');
@@ -205,9 +206,9 @@ if(isset($_POST['submitupload'])){
                           $itemRow = $fetch_ordersItem;
                         }
                       }
-                      $summed += (int)($itemRow && $itemRow["price"] ? (int)$itemRow["price"]: '0');
+                      $summed += (int)($itemRow && $itemRow["price"] ? (int)$itemRow["price"] * (int)$qty: '0');
                       ?>
-                      <div>Rp. <?= $itemRow && $itemRow["price"] ? (int)$itemRow["price"]: '0' ?></div>
+                      <div>Rp. <?= $itemRow && $itemRow["price"] ? (int)$itemRow["price"] * (int)$qty: '0' ?></div>
                     </li>
                     <?php endforeach; ?>
                   </ul>

@@ -134,7 +134,19 @@ if(!isset($_GET["id"])):
     <h3>checkout pesanan</h3>
     <p> <a href="home.php">home</a> / checkout </p>
 </section>
-<section class="display-order">
+
+<section class="checkout w-100">
+<div style="
+max-width:1200px;
+background-color: var(--white);
+border: var(--border);
+margin: 0 auto;
+border-radius: 0.5rem;
+padding: 2rem;
+box-shadow: var(--border);
+">
+<h5 class="alert-heading mb-3">Summary</h5>
+
     <?php
         $grand_total = 0;
         $select_cart = mysqli_query($conn, "SELECT * FROM `cart` WHERE user_id = '$user_id'") or die('query failed');
@@ -143,16 +155,58 @@ if(!isset($_GET["id"])):
             $total_price = ($fetch_cart['price'] * $fetch_cart['quantity']);
             $grand_total += $total_price;
     ?>    
-    <p> <?php echo $fetch_cart['name'] ?> <span>(<?php echo '$'.$fetch_cart['price'].'/-'.' x '.$fetch_cart['quantity']  ?>)</span> </p>
+    <!-- <p> <?php echo $fetch_cart['name'] ?> <span>(<?php echo '$'.$fetch_cart['price'].'/-'.' x '.$fetch_cart['quantity']  ?>)</span> </p> -->
+
+        <ul class="mb-4 pb-2" style="">
+          <?php
+          $itemString = $fetch_cart["name"];
+
+          ?>
+          <li class="d-flex align-items-center justify-content-between">
+            <div><?= $itemString ?> (x<?= $fetch_cart['quantity'] ?>)</div>
+            <?php
+            $itemRow = null;
+            $select_orders_item_makanan = mysqli_query($conn, "SELECT * FROM `products` WHERE name = '$itemString'") or die('query failed');
+            $select_orders_item_minuman = mysqli_query($conn, "SELECT * FROM `drinks` WHERE name = '$itemString'") or die('query failed');
+            $select_orders_item_table = mysqli_query($conn, "SELECT * FROM `tables` WHERE name = '$itemString'") or die('query failed');
+            if(mysqli_num_rows($select_orders_item_makanan) > 0){
+              while($fetch_ordersItem = mysqli_fetch_assoc($select_orders_item_makanan)){
+                $itemRow = $fetch_ordersItem;
+              }
+            } else if(mysqli_num_rows($select_orders_item_minuman) > 0) {
+              while($fetch_ordersItem = mysqli_fetch_assoc($select_orders_item_minuman)){
+                $itemRow = $fetch_ordersItem;
+              }
+            } else if(mysqli_num_rows($select_orders_item_table) > 0) {
+              while($fetch_ordersItem = mysqli_fetch_assoc($select_orders_item_table)){
+                $itemRow = $fetch_ordersItem;
+              }
+            }
+            ?>
+            <div>Rp. <?= $fetch_cart["price"] * $fetch_cart['quantity'] ?></div>
+          </li>
+        </ul>
     <?php
         }
         }else{
             echo '<p class="kosong">keranjang Anda kosong</p>';
         }
     ?>
-    <div class="grand-total">Total Keseluruhan : <span>Rp.<?php echo $grand_total; ?>/-</span></div>
+    <!-- <div class="grand-total">Total Keseluruhan : <span>Rp.<?php echo $grand_total; ?>/-</span></div> -->
+    <ul style="list-style: none;border-top: 1px solid gray;border-top-style: dotted; padding-top: 1rem;">
+      <li class="d-flex align-items-center justify-content-between">
+        <div>Total</div>
+        <div>Rp. <?= $grand_total ?></div>
+      </li>
+    </ul>
+</div>
 </section>
 
+<style>
+  /* .checkout form .flex .inputBox {
+    flex: unset;
+  } */
+</style>
 <section class="checkout">
 
     <form action="" method="POST">
@@ -198,11 +252,11 @@ if(!isset($_GET["id"])):
             
 
             <div class="inputBox" style="display:flex;align-items:center;">
-            <div class="inputBox" style="margin-right: 1rem;">
+            <div class="inputBox w-full" style="margin-right: 1rem;">
                 <span>Hari :</span>
                   <input id="datepicker1" type="date" name="reservation_date" class="form-control" placeholder="Date" required="">
             </div>
-                <div class="inputBox">
+                <div class="inputBox flex-grow-1">
                 <span>Waktu :</span>
                   <select type="time" name="reservation_time" class="form-control" placeholder="Heure" id="time" required="">
                     <option value=""> -Select- </option>
@@ -355,10 +409,12 @@ else:
                     <li class="d-flex align-items-center justify-content-between">
                       <div><?= $item ?></div>
                       <?php
+                      $qty = 1;
                       $itemRow = null;
                       $itemString = '';
                       if (preg_match('/[a-zA-Z0-9]+\s?(\(\d+\))/', $item, $matches)) {
                         $itemString = str_replace($matches[1], '', $item);
+                        $qty = str_replace('(', '', str_replace(')', '', $matches[1]));
                       }
                       $select_orders_item_makanan = mysqli_query($conn, "SELECT * FROM `products` WHERE name = '$itemString'") or die('query failed');
                       $select_orders_item_minuman = mysqli_query($conn, "SELECT * FROM `drinks` WHERE name = '$itemString'") or die('query failed');
@@ -376,9 +432,9 @@ else:
                           $itemRow = $fetch_ordersItem;
                         }
                       }
-                      $summed += (int)($itemRow && $itemRow["price"] ? (int)$itemRow["price"]: '0');
+                      $summed += (int)($itemRow && $itemRow["price"] ? (int)$itemRow["price"] * (int)$qty: '0');
                       ?>
-                      <div>Rp. <?= $itemRow && $itemRow["price"] ? (int)$itemRow["price"]: '0' ?></div>
+                      <div>Rp. <?= $itemRow && $itemRow["price"] ? (int)$itemRow["price"] * (int)$qty: '0' ?></div>
                     </li>
                     <?php endforeach; ?>
                   </ul>

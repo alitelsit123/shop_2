@@ -178,25 +178,17 @@ if (isset($_GET['delete'])) {
 
 <section class="add-products">
 
-<?php if(!isset($_GET["v"]) || !in_array($_GET["v"], ['minuman','table'])): ?>
+<?php if(in_array($_GET["v"], ['add'])): ?>
+<form action="" method="POST" enctype="multipart/form-data">
+    <h3>Tambah Menu Makanan</h3>
+    <input type="text" class="box" required placeholder="masukkan nama makanan" name="name">
+    <input type="number" min="0" class="box" required placeholder="masukkan harga makanan" name="price">
+    <textarea name="details" class="box" required placeholder="masukkan detail makanan" cols="30" rows="10"></textarea>
+    <input type="file" accept="image/jpg, image/jpeg, image/png" required class="box" name="image">
+    <input type="submit" value="Tambah Produk" name="add_product" class="btn">
+  </form>
 
-
-   <form action="" method="POST" enctype="multipart/form-data">
-      <h3>Tambah Menu Makanan</h3>
-      <input type="text" class="box" required placeholder="masukkan nama makanan" name="name">
-      <input type="number" min="0" class="box" required placeholder="masukkan harga makanan" name="price">
-      <textarea name="details" class="box" required placeholder="masukkan detail makanan" cols="30" rows="10"></textarea>
-      <input type="file" accept="image/jpg, image/jpeg, image/png" required class="box" name="image">
-      <input type="submit" value="Tambah Produk" name="add_product" class="btn">
-   </form>
-   <?php endif; ?>
-
-
-
-   <?php if(isset($_GET["v"]) && $_GET["v"] == 'minuman'): ?>
-
-
-    <form action="" method="POST" enctype="multipart/form-data">
+  <form action="" method="POST" enctype="multipart/form-data">
         <h3>Tambah Menu Minuman</h3>
         <input type="text" class="box" required placeholder="masukkan nama minuman" name="name">
         <input type="number" min="0" class="box" required placeholder="masukkan harga minuman" name="price">
@@ -204,13 +196,7 @@ if (isset($_GET['delete'])) {
         <input type="file" accept="image/jpg, image/jpeg, image/png" required class="box" name="image">
         <input type="submit" value="Tambah Minuman" name="add_drinks" class="btn">
     </form>
-    <?php endif; ?>
-
-
-    <?php if(isset($_GET["v"]) && $_GET["v"] == 'table'): ?>
-
-
-     <form action="" method="POST" enctype="multipart/form-data">
+    <form action="" method="POST" enctype="multipart/form-data">
        <h3>Tambah Tempat</h3>
        <input type="text" class="box" required placeholder="Masukkan nama tabel" name="name">
        <input type="number" min="0" class="boxdead" required placeholder="" name="price" readonly>
@@ -218,12 +204,16 @@ if (isset($_GET['delete'])) {
        <input type="file" accept="image/jpg, image/jpeg, image/png" required class="box" name="image">
        <input type="submit" value="Tambah Tabel" name="add_meja" class="btn">
    </form>
-   <?php endif; ?>
+
+<?php endif; ?>
    
 
 
 </section>
    
+<?php if(isset($_GET["v"]) && $_GET["v"] == 'makan'): ?>
+
+  
 
 <section class="show-products">
 <h1 class="title">Makanan </h1>
@@ -253,6 +243,7 @@ if (isset($_GET['delete'])) {
 
 
 </section>
+<?php endif; ?>
 
 <?php if(isset($_GET["v"]) && $_GET["v"] == 'minuman'): ?>
 
